@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.1)
 project(example)
 
+find_package(CGAL)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # libigl
 option(LIBIGL_USE_STATIC_LIBRARY "Use libigl as static library" OFF)
 option(LIBIGL_WITH_ANTTWEAKBAR      "Use AntTweakBar"    OFF)
-option(LIBIGL_WITH_CGAL             "Use CGAL"           OFF)
+option(LIBIGL_WITH_CGAL             "Use CGAL"           ON)
 option(LIBIGL_WITH_COMISO           "Use CoMiso"         OFF)
 option(LIBIGL_WITH_CORK             "Use Cork"           OFF)
 option(LIBIGL_WITH_EMBREE           "Use Embree"         OFF)
@@ -28,4 +29,4 @@ find_package(LIBIGL REQUIRED QUIET)
 # Add your project files
 file(GLOB SRCFILES *.cpp)
 add_executable(${PROJECT_NAME}_bin ${SRCFILES})
-target_link_libraries(${PROJECT_NAME}_bin igl::core igl::viewer)
+target_link_libraries(${PROJECT_NAME}_bin igl::core igl::cgal)
